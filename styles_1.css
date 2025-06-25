@@ -1,0 +1,51 @@
+/* Skip to Main Content Link */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #333;
+    color: white;
+    padding: 8px;
+}
+.skip-link:focus {
+    top: 0;
+}
+
+/* Navigation Styling */
+nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    background: #f4f4f4;
+    justify-content: space-around;
+    align-items: center;
+}
+nav a {
+    text-decoration: none;
+    color: #333;
+    padding: 10px;
+}
+nav a:hover {
+    background: #ddd;
+    transition: background 0.3s ease;
+}
+
+/* Image Styling with Box Model */
+img {
+    border: 5px solid #333;
+    padding: 10px;
+    border-radius: 10px;
+    width: 200px;
+}
+
+/* Grid Layout */
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+/* nth-child Styling */
+.image-grid img:nth-child(odd) {
+    border-radius: 20px;
+}
