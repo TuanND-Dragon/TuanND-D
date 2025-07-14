@@ -1,31 +1,16 @@
-/* li {
-  display: inline;
-  margin-right: 10px;
-} */
-
-nav {
-  display: inline-block;
-  width: 80%;
+@media (min-width: 772px) {
+  div {
+    width: 45vw;
+    /* Additional adjustments for height and layout as needed */
+  }
+  img {
+    max-height: 30vh;
+    /* Additional adjustments if required */
+  }
 }
 
-nav img {
-  width: 10%;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: 40% 40%;
-  justify-content: space-between;
-  align-items: center;
-  row-gap: 10px;
-}
-
-.grid img {
-  width: 100%;
-}
-
-.flex {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+@media (min-width: 998px) {
+  div {
+    width: 30vw;
+  }
 }
