@@ -3,218 +3,113 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Website</title>
+    <title>Responsive Website</title>
     <style>
+      /* Mobile view (default) - Mobile-first approach */
       body {
-        font-family: "Poppins", sans-serif;
         margin: 0;
         padding: 0;
-        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-        color: #333;
+        font-family: Arial, sans-serif;
       }
-      nav {
-        background: rgba(255, 255, 255, 0.95);
-        padding: 1.5em;
-        text-align: center;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        position: sticky;
-        top: 0;
-        z-index: 100;
-      }
-      nav a {
-        margin: 0 1.5em;
-        text-decoration: none;
-        color: #2c3e50;
-        font-weight: 500;
-        transition: color 0.3s ease;
-      }
-      nav a:hover {
-        color: #3498db;
-      }
-      .skip-link {
-        position: absolute;
-        top: -40px;
-        left: 0;
-        background: #2c3e50;
-        color: #fff;
+
+      .grid-container {
+        display: grid;
+        grid-template-columns: 1fr; /* One column */
+        gap: 10px; /* 10px gap between rows and columns */
         padding: 10px;
-        z-index: 100;
-        transition: top 0.3s ease;
       }
-      .skip-link:focus {
-        top: 0;
+
+      figure {
+        margin: 0;
+        padding: 10px;
+        background-color: #f0f0f0; /* Light background for default light theme */
       }
-      section {
-        padding: 3em 2em;
-        max-width: 1200px;
-        margin: 0 auto;
-        text-align: center;
+
+      figure img {
+        max-width: 100%;
+        height: auto;
       }
-      h1 {
-        color: #2c3e50;
-        font-size: 2.5em;
-        margin-bottom: 0.5em;
-        text-transform: uppercase;
-        letter-spacing: 1px;
+
+      figure figcaption {
+        font-size: 14px;
+        color: #333; /* Default text color */
       }
-      #image {
-        width: 400px;
-        height: 250px;
-        background-image: url("");
-        background-size: cover;
-        background-position: center;
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #fff;
-        font-weight: 600;
-        text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
-        border-radius: 10px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        transition: background-image 0.3s ease, transform 0.3s ease;
-      }
-      #image:hover {
-        transform: scale(1.02);
-      }
-      .gallery-images {
-        display: flex;
-        justify-content: center;
-        gap: 15px;
-        margin-top: 2em;
-        flex-wrap: wrap;
-      }
-      .gallery-images img {
-        width: 120px;
-        height: 120px;
-        object-fit: cover;
-        cursor: pointer;
-        border-radius: 8px;
-        border: 3px solid #fff;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
-        transition: transform 0.3s ease, border-color 0.3s ease;
-      }
-      .gallery-images img:hover,
-      .gallery-images img:focus {
-        border-color: #3498db;
-        transform: scale(1.1);
-      }
-      @media (max-width: 768px) {
-        h1 {
-          font-size: 2em;
+
+      /* Tablet view (min-width: 772px) */
+      @media (min-width: 772px) {
+        .grid-container {
+          grid-template-columns: 1fr 1fr; /* Two columns */
         }
-        #image {
-          width: 100%;
-          max-width: 300px;
-          height: 200px;
+
+        figure {
+          border-radius: 50%; /* Circular shape */
         }
-        .gallery-images img {
-          width: 100px;
-          height: 100px;
+
+        figure:last-child {
+          grid-column: 1 / -1; /* Last figure takes both columns */
+        }
+      }
+
+      /* Large screen view (min-width: 992px) */
+      @media (min-width: 992px) {
+        .grid-container {
+          grid-template-columns: 1fr 1fr; /* Maintain two columns */
+        }
+
+        figure {
+          border-radius: 0; /* Remove border radius */
+        }
+
+        figure:nth-child(3n) {
+          grid-column: 1 / -1; /* Every third figure takes both columns */
+        }
+      }
+
+      /* Prefers-reduced-motion media query */
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto; /* Remove scroll behavior */
+        }
+      }
+
+      /* Dark mode media query (assuming default is light) */
+      @media (prefers-color-scheme: dark) {
+        figure {
+          background-color: #333; /* Dark background */
+        }
+
+        figure figcaption {
+          color: #ffd700; /* Lighter yellow-ish text */
+        }
+
+        figure {
+          border: 2px solid #000; /* Black border */
         }
       }
     </style>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
-      rel="stylesheet"
-    />
   </head>
-  <body onload="addTabFocus()">
-    <a href="#main-content" class="skip-link">Skip to Main Content</a>
-
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#contact">Contact</a>
-    </nav>
-
-    <section id="home">
-      <h1 id="main-content">Welcome to My Website</h1>
-      <p>
-        A modern and interactive website showcasing a beautiful gallery and
-        more.
-      </p>
-    </section>
-
-    <section id="gallery">
-      <h1>Gallery Page</h1>
-      <div id="image">Hover over an image below to display here.</div>
-      <div class="gallery-images" id="galleryContainer">
-        <img
-          src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-4.0.3&auto=format&fit=crop&w=120&h=120&q=80"
-          alt="A serene mountain landscape under a clear sky"
-          class="preview"
-        />
-        <img
-          src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?ixlib=rb-4.0.3&auto=format&fit=crop&w=120&h=120&q=80"
-          alt="A colorful sunrise over a calm ocean"
-          class="preview"
-        />
-        <img
-          src="https://images.unsplash.com/photo-1499092341957-92e897e8f0f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=120&h=120&q=80"
-          alt="A vibrant city skyline at dusk"
-          class="preview"
-        />
-        <img
-          src="https://images.unsplash.com/photo-1505576399279-565b52d4ac71?ixlib=rb-4.0.3&auto=format&fit=crop&w=120&h=120&q=80"
-          alt="A close-up of a blooming red rose"
-          class="preview"
-        />
-        <img
-          src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=120&h=120&q=80"
-          alt="A peaceful forest with a flowing stream"
-          class="preview"
-        />
-        <img
-          src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-4.0.3&auto=format&fit=crop&w=120&h=120&q=80"
-          alt="A majestic waterfall surrounded by greenery"
-          class="preview"
-        />
-      </div>
-    </section>
-
-    <section id="contact">
-      <h1>Contact Page</h1>
-      <p>Reach out to us for more information.</p>
-    </section>
-
-    <script>
-      /* Function to update the preview area when hovering or focusing on an image */
-      function upDate(previewPic) {
-        console.log("Event triggered on:", previewPic.alt); // Log event and alt text
-        const imageDiv = document.getElementById("image");
-        imageDiv.textContent = previewPic.alt;
-        imageDiv.style.backgroundImage = `url('${previewPic.src}')`;
-      }
-
-      /* Function to reset the preview area when mouse leaves or blurs */
-      function undo() {
-        console.log("Event reset triggered"); // Log reset event
-        const imageDiv = document.getElementById("image");
-        imageDiv.style.backgroundImage = "url('')";
-        imageDiv.textContent = "Hover over an image below to display here.";
-      }
-
-      /* Function to add tabfocus attribute */
-      function addTabFocus() {
-        console.log("addTabFocus function triggered"); // Log function trigger
-        const images = document.querySelectorAll(".preview");
-        for (let i = 0; i < images.length; i++) {
-          images[i].setAttribute("tabindex", "0"); // Add tabindex for keyboard navigation
-          images[i].addEventListener("focus", function () {
-            upDate(this);
-          }); // Focus event
-          images[i].addEventListener("blur", undo); // Blur event
-        }
-      }
-
-      // Initial event listeners for mouse events
-      document.querySelectorAll(".preview").forEach((img) => {
-        img.addEventListener("mouseover", function () {
-          upDate(this);
-        });
-        img.addEventListener("mouseleave", undo);
-      });
-    </script>
+  <body>
+    <div class="grid-container">
+      <figure>
+        <img src="placeholder1.jpg" alt="Description of image 1" />
+        <figcaption>Figure 1 Caption</figcaption>
+      </figure>
+      <figure>
+        <img src="placeholder2.jpg" alt="Description of image 2" />
+        <figcaption>Figure 2 Caption</figcaption>
+      </figure>
+      <figure>
+        <img src="placeholder3.jpg" alt="Description of image 3" />
+        <figcaption>Figure 3 Caption</figcaption>
+      </figure>
+      <figure>
+        <img src="placeholder4.jpg" alt="Description of image 4" />
+        <figcaption>Figure 4 Caption</figcaption>
+      </figure>
+    </div>
+    <p>
+      This is the updated paragraph content for the website. Replace this text
+      with your own content as needed.
+    </p>
   </body>
 </html>
