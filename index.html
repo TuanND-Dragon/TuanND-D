@@ -3,113 +3,347 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Responsive Website</title>
+    <title>Website Wireframes - Multiple Views</title>
     <style>
-      /* Mobile view (default) - Mobile-first approach */
       body {
-        margin: 0;
-        padding: 0;
         font-family: Arial, sans-serif;
-      }
-
-      .grid-container {
-        display: grid;
-        grid-template-columns: 1fr; /* One column */
-        gap: 10px; /* 10px gap between rows and columns */
-        padding: 10px;
-      }
-
-      figure {
         margin: 0;
+        padding: 20px;
+        background: #f5f5f5;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 30px;
+        font-size: 2.2em;
+      }
+
+      .wireframe-section {
+        margin-bottom: 50px;
+        border: 2px solid #ddd;
+        padding: 20px;
+        border-radius: 8px;
+      }
+
+      .section-title {
+        font-size: 1.5em;
+        color: #555;
+        margin-bottom: 20px;
+        text-align: center;
+        background: #f8f8f8;
         padding: 10px;
-        background-color: #f0f0f0; /* Light background for default light theme */
+        border-radius: 5px;
       }
 
-      figure img {
-        max-width: 100%;
-        height: auto;
+      .views-container {
+        display: flex;
+        gap: 30px;
+        justify-content: center;
+        flex-wrap: wrap;
       }
 
-      figure figcaption {
+      .wireframe {
+        border: 3px solid #333;
+        background: white;
+        position: relative;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .desktop-view {
+        width: 400px;
+        height: 300px;
+      }
+
+      .mobile-view {
+        width: 180px;
+        height: 320px;
+      }
+
+      .landing-view {
+        width: 350px;
+        height: 280px;
+      }
+
+      .view-label {
+        position: absolute;
+        top: -25px;
+        left: 0;
+        background: #333;
+        color: white;
+        padding: 5px 15px;
+        font-size: 12px;
+        font-weight: bold;
+        border-radius: 3px;
+      }
+
+      /* Wireframe Elements */
+      .header {
+        height: 60px;
+        background: #e0e0e0;
+        border-bottom: 2px solid #bbb;
+        display: flex;
+        align-items: center;
+        padding: 0 15px;
+        font-weight: bold;
+      }
+
+      .nav {
+        height: 40px;
+        background: #d0d0d0;
+        border-bottom: 1px solid #aaa;
+        display: flex;
+        align-items: center;
+        padding: 0 15px;
+        font-size: 12px;
+      }
+
+      .content-area {
+        padding: 15px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .hero-section {
+        height: 80px;
+        background: #f0f0f0;
+        border: 2px dashed #999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         font-size: 14px;
-        color: #333; /* Default text color */
+        color: #666;
       }
 
-      /* Tablet view (min-width: 772px) */
-      @media (min-width: 772px) {
-        .grid-container {
-          grid-template-columns: 1fr 1fr; /* Two columns */
-        }
-
-        figure {
-          border-radius: 50%; /* Circular shape */
-        }
-
-        figure:last-child {
-          grid-column: 1 / -1; /* Last figure takes both columns */
-        }
+      .content-block {
+        height: 40px;
+        background: #f8f8f8;
+        border: 1px solid #ccc;
+        display: flex;
+        align-items: center;
+        padding: 0 10px;
+        font-size: 11px;
+        color: #777;
       }
 
-      /* Large screen view (min-width: 992px) */
-      @media (min-width: 992px) {
-        .grid-container {
-          grid-template-columns: 1fr 1fr; /* Maintain two columns */
-        }
-
-        figure {
-          border-radius: 0; /* Remove border radius */
-        }
-
-        figure:nth-child(3n) {
-          grid-column: 1 / -1; /* Every third figure takes both columns */
-        }
+      .sidebar {
+        width: 100px;
+        background: #e8e8e8;
+        border-left: 2px solid #bbb;
+        padding: 15px 10px;
+        font-size: 10px;
+        color: #666;
       }
 
-      /* Prefers-reduced-motion media query */
-      @media (prefers-reduced-motion: reduce) {
-        html {
-          scroll-behavior: auto; /* Remove scroll behavior */
-        }
+      .footer {
+        height: 50px;
+        background: #d8d8d8;
+        border-top: 2px solid #aaa;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+        color: #555;
       }
 
-      /* Dark mode media query (assuming default is light) */
-      @media (prefers-color-scheme: dark) {
-        figure {
-          background-color: #333; /* Dark background */
-        }
+      /* Mobile specific styles */
+      .mobile-view .header {
+        height: 50px;
+        font-size: 12px;
+      }
 
-        figure figcaption {
-          color: #ffd700; /* Lighter yellow-ish text */
-        }
+      .mobile-view .nav {
+        height: 35px;
+        font-size: 10px;
+      }
 
-        figure {
-          border: 2px solid #000; /* Black border */
-        }
+      .mobile-view .hero-section {
+        height: 60px;
+        font-size: 11px;
+      }
+
+      .mobile-view .content-block {
+        height: 30px;
+        font-size: 9px;
+      }
+
+      .mobile-view .footer {
+        height: 40px;
+        font-size: 9px;
+      }
+
+      /* Landing page specific */
+      .landing-hero {
+        height: 100px;
+        background: #f5f5f5;
+        border: 3px dashed #888;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 13px;
+        color: #555;
+        margin-bottom: 15px;
+      }
+
+      .feature-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-bottom: 15px;
+      }
+
+      .feature-box {
+        height: 35px;
+        background: #f0f0f0;
+        border: 1px solid #ccc;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 10px;
+        color: #666;
+      }
+
+      .notes {
+        margin-top: 30px;
+        padding: 20px;
+        background: #f9f9f9;
+        border-left: 4px solid #007acc;
+        border-radius: 5px;
+      }
+
+      .notes h3 {
+        margin-top: 0;
+        color: #007acc;
+      }
+
+      .notes ul {
+        color: #555;
+        line-height: 1.6;
       }
     </style>
   </head>
   <body>
-    <div class="grid-container">
-      <figure>
-        <img src="placeholder1.jpg" alt="Description of image 1" />
-        <figcaption>Figure 1 Caption</figcaption>
-      </figure>
-      <figure>
-        <img src="placeholder2.jpg" alt="Description of image 2" />
-        <figcaption>Figure 2 Caption</figcaption>
-      </figure>
-      <figure>
-        <img src="placeholder3.jpg" alt="Description of image 3" />
-        <figcaption>Figure 3 Caption</figcaption>
-      </figure>
-      <figure>
-        <img src="placeholder4.jpg" alt="Description of image 4" />
-        <figcaption>Figure 4 Caption</figcaption>
-      </figure>
+    <div class="container">
+      <h1>Website Design Wireframes</h1>
+
+      <!-- Main Site Pages -->
+      <div class="wireframe-section">
+        <div class="section-title">Main Website Pages</div>
+        <div class="views-container">
+          <!-- Desktop View -->
+          <div class="wireframe desktop-view">
+            <div class="view-label">DESKTOP VIEW</div>
+            <div class="header">LOGO | Website Title</div>
+            <div class="nav">Home | About | Services | Portfolio | Contact</div>
+            <div style="display: flex; flex: 1">
+              <div class="content-area">
+                <div class="hero-section">Hero Image / Banner</div>
+                <div class="content-block">Main Content Section 1</div>
+                <div class="content-block">Main Content Section 2</div>
+                <div class="content-block">Call-to-Action Area</div>
+              </div>
+              <div class="sidebar">
+                Sidebar<br />
+                - Links<br />
+                - Widgets<br />
+                - Ads
+              </div>
+            </div>
+            <div class="footer">Footer Links | Copyright | Social Media</div>
+          </div>
+
+          <!-- Mobile View -->
+          <div class="wireframe mobile-view">
+            <div class="view-label">MOBILE VIEW</div>
+            <div class="header">☰ LOGO</div>
+            <div class="content-area" style="flex: 1">
+              <div class="hero-section">Hero Banner</div>
+              <div class="content-block">Content Block 1</div>
+              <div class="content-block">Content Block 2</div>
+              <div class="content-block">Content Block 3</div>
+              <div class="content-block">CTA Button</div>
+              <div class="content-block">Contact Info</div>
+            </div>
+            <div class="footer">Footer Menu</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Landing Page -->
+      <div class="wireframe-section">
+        <div class="section-title">Special Landing Page</div>
+        <div class="views-container">
+          <div class="wireframe landing-view">
+            <div class="view-label">LANDING PAGE</div>
+            <div class="header">SPECIAL OFFER | LOGO</div>
+            <div class="content-area" style="flex: 1">
+              <div class="landing-hero">
+                MAIN HEADLINE<br />
+                Compelling Offer
+              </div>
+              <div class="feature-grid">
+                <div class="feature-box">Feature 1</div>
+                <div class="feature-box">Feature 2</div>
+                <div class="feature-box">Feature 3</div>
+                <div class="feature-box">Feature 4</div>
+              </div>
+              <div
+                class="content-block"
+                style="
+                  height: 50px;
+                  background: #4caf50;
+                  color: white;
+                  font-weight: bold;
+                  justify-content: center;
+                "
+              >
+                SIGN UP NOW - LIMITED TIME
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="notes">
+        <h3>Design Notes & Specifications:</h3>
+        <ul>
+          <li>
+            <strong>Responsive Design:</strong> The wireframes show how content
+            adapts from desktop (400px wide) to mobile (180px wide) views
+          </li>
+          <li>
+            <strong>Mobile-First Approach:</strong> Navigation collapses to
+            hamburger menu, sidebar content moves below main content
+          </li>
+          <li>
+            <strong>Landing Page Strategy:</strong> Unique layout focused on
+            conversion with prominent CTA and feature highlights
+          </li>
+          <li>
+            <strong>Content Hierarchy:</strong> Clear visual hierarchy with
+            header, navigation, main content, and footer sections
+          </li>
+          <li>
+            <strong>User Experience:</strong> Touch-friendly mobile elements and
+            streamlined navigation for different screen sizes
+          </li>
+          <li>
+            <strong>Technical Considerations:</strong> Flexible grid system,
+            scalable typography, and optimized loading for mobile devices
+          </li>
+        </ul>
+      </div>
     </div>
-    <p>
-      This is the updated paragraph content for the website. Replace this text
-      with your own content as needed.
-    </p>
   </body>
 </html>
